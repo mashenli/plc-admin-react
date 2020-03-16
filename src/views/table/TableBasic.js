@@ -48,7 +48,6 @@ class TableBasic extends Component {
 			// Read total count from server
 			// pagination.total = data.totalCount
 			// pagination.total = 200;
-			console.log(data)
 			this.setState({
 				loading: false,
 				data: data.data,

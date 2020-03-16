@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Table, Divider, Modal, message } from 'antd';
 import EditForm from '../../components/EditForm';
+import $axios from '../../axios/$axios';
 const { confirm } = Modal;
 class TableClass extends Component {
 	constructor(props) {
@@ -13,14 +14,11 @@ class TableClass extends Component {
 				{
 					title: '模块',
 					dataIndex: 'classId',
-					// sorter: true,
-					// render: sort => `${sort.first} ${sort.last}`,
 					width: '20%'
 				},
 				{
 					title: '型号',
 					dataIndex: 'modular',
-					// filters: [{ text: 'Male', value: 'male' }, { text: 'Female', value: 'female' }],
 					width: '20%'
 				},
 				{
@@ -53,7 +51,7 @@ class TableClass extends Component {
 		}
 	}
 	componentWillMount() {
-		console.log(this.state)
+		// console.log(this.state)
 	}
 	componentWillReceiveProps(nextProps) {
 		if ('data' in nextProps && 'loading' in nextProps) {
@@ -65,26 +63,63 @@ class TableClass extends Component {
 	}
 	handleEdit(row) {
 		this.setState({ currentRow: row, visible: true });
-		console.log(row)
 	}
 	handleDel(row) {
+		let that = this
 		confirm({
 			title: '温馨提示',
-			content: '确定要删除当前内容吗？',
+			content: '确定要删除当前产品吗？',
 			okText: '确定',
 			cancelText: '取消',
 			onOk() {
-				message.info('你点击了确定，当前行key为：' + row.key, 1);
+				that.delete(row)
 			},
 			onCancel() { }
 		});
 	}
+	delete(value) {
+		let that = this
+		$axios({
+			url: '/admin/deleteProduct',
+			method: 'post',
+			type: 'json',
+			data: value
+		}).then(data => {
+			if (data.data.code == 0) {
+				let num = that.state.data.findIndex(obj => obj.productId === value.productId)
+				console.log(num)
+				if (num > -1) {
+					let newData = that.state.data
+					newData.splice(num, 1)
+					that.setState({
+						data: newData
+					})
+					message.info('删除成功')
+				}
+			}
+			else {
+				message.info('删除失败')
+			}
+		});
+	}
 	handleOk = () => {
-		this.setState({ visible: false });
+		// this.setState({ visible: false });
+		console.log("确认删除")
 	};
 	handleCancel = () => {
 		this.setState({ visible: false });
 	};
+	handleSubmit = e => {
+		console.log("进入table")
+		$axios({
+			url: '/admin/modifyProduct',
+			method: 'post',
+			type: 'json',
+			data: e
+		}).then(data => {
+			console.log(data)
+		});
+	}
 	render() {
 		return (
 			<div>
