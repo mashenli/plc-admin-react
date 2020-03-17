@@ -106,11 +106,11 @@ export const menus = [
 		children: [
 			{
 				path: '/control/tree',
-				title: '树形控件'
+				title: '添加管理员'
 			},
 			{
 				path: '/control/select',
-				title: '选择器'
+				title: '查看管理员'
 			},
 			{
 				path: '/control/other',

@@ -3,21 +3,6 @@ import { Form, Input, Icon, Cascader, Select, Row, Col, Checkbox, Button } from 
 import $axios from '../../axios/$axios';
 const { Option } = Select;
 
-const residences = [
-	{
-		value: 'H7-200 SMART',
-		label: 'H7-200 SMART',
-	},
-	{
-		value: 'H7-200',
-		label: 'H7-200',
-	},
-	{
-		value: 'H7-300',
-		label: 'H7-300',
-	}
-];
-
 class TextEditor extends React.Component {
 	state = {
 		confirmDirty: false,
@@ -45,17 +30,16 @@ class TextEditor extends React.Component {
 				console.log('Received values of form: ', values);
 				data = values
 				data.sort = values.residence[0]
-				data.classId = values.residence[1]
 				delete data.residence
 			}
 		});
+		console.log(data)
 		$axios({
-			url: '/admin/addProduct',
+			url: '/admin/addClass',
 			method: 'post',
 			type: 'json',
 			data: data
 		}).then(data => {
-			console.log(data)
 			if (data.data.code == 0) {
 				alert("添加成功")
 			}
@@ -102,7 +86,7 @@ class TextEditor extends React.Component {
 						})(<Cascader options={this.state.residences} />)}
 					</Form.Item>
 					<Form.Item label="模块">
-						{getFieldDecorator('modular', {
+						{getFieldDecorator('classId', {
 							rules: [
 								{
 									required: true,
