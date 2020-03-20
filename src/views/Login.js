@@ -25,17 +25,25 @@ class Login extends Component {
 					type: 'json',
 					data: values
 				}).then(data => {
-					// console.log(data.data)
+					console.log(data.data)
 					let code = data.data.code;
-					console.log(code)
+					let type = data.data.type=='admin'?1:0
+					// if (type === 'admin') {
+					// 	type = 1
+					// } else {
+					// 	type = 0
+					// }
+					let role = {}
+					role.type = type
+					role.name = type == 1 ? '超级管理员' : '管理员'
+					console.log(role)
 					if (code === 0) {	//用户不存在
 						console.log("用户不存在")
-
 					} else if (code === 1) {  //登录成功
 						console.log("登陆成功")
 						localStorage.setItem('isLogin', '1');
-						this.props.setUserInfo(Object.assign({}, values, { role: { type: 1, name: '超级管理员' } }));
-						localStorage.setItem('userInfo', JSON.stringify(Object.assign({}, values, { role: { type: 1, name: '超级管理员' } })));
+						this.props.setUserInfo(Object.assign({}, values, { role: role }));
+						localStorage.setItem('userInfo', JSON.stringify(Object.assign({}, values, { role: { type: type, name: '超级管理员' } })));
 						this.props.history.push('/dashboard');
 					} else {  //密码错误
 						console.log("密码错误")

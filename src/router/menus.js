@@ -76,6 +76,7 @@ export const menus = [
 		path: '/chart',
 		title: '账单管理',
 		icon: 'area-chart',
+		permission: 1,
 		children: [
 			{
 				path: '/chart/line',
@@ -103,6 +104,7 @@ export const menus = [
 		path: '/control',
 		title: '员工管理',
 		icon: 'control',
+		permission: 1,
 		children: [
 			{
 				path: '/control/tree',

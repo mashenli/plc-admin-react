@@ -122,7 +122,7 @@ class TableClass extends Component {
 					loading={this.state.loading}
 					onChange={this.handleTableChange}
 					pagination={this.state.pagination}
-					rowKey={record => record.productId}
+					rowKey={record => record.phoneNum}
 				/>
 				<Modal title="修改产品信息" visible={this.state.visible} onOk={this.handleOk} onCancel={this.handleCancel} footer={null}>
 					<EditForm data={this.state.currentRow} visible={this.state.visible} wrappedComponentRef={form => (this.formRef = form)} handleSubmit={this.handleSubmit} />
