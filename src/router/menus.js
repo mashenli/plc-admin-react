@@ -31,11 +31,11 @@ export const menus = [
 			}
 		]
 	},
-	{
-		path: '/icon',
-		title: '图标',
-		icon: 'file'
-	},
+	// {
+	// 	path: '/icon',
+	// 	title: '图标',
+	// 	icon: 'file'
+	// },
 	{
 		path: '/form',
 		title: '产品管理',
@@ -51,53 +51,53 @@ export const menus = [
 			}
 		]
 	},
-	{
-		path: '/menu',
-		title: '多级菜单',
-		icon: 'menu',
-		children: [
-			{
-				path: '/menu/level',
-				title: '二级菜单',
-				children: [
-					{
-						path: '/menu/level/submenu-1',
-						title: '三级菜单1',
-					},
-					{
-						path: '/menu/level/submenu-2',
-						title: '三级菜单2'
-					}
-				]
-			}
-		]
-	},
+	// {
+	// 	path: '/menu',
+	// 	title: '多级菜单',
+	// 	icon: 'menu',
+	// 	children: [
+	// 		{
+	// 			path: '/menu/level',
+	// 			title: '二级菜单',
+	// 			children: [
+	// 				{
+	// 					path: '/menu/level/submenu-1',
+	// 					title: '三级菜单1',
+	// 				},
+	// 				{
+	// 					path: '/menu/level/submenu-2',
+	// 					title: '三级菜单2'
+	// 				}
+	// 			]
+	// 		}
+	// 	]
+	// },
 	{
 		path: '/chart',
-		title: '账单管理',
+		title: '订单管理',
 		icon: 'area-chart',
-		permission: 1,
 		children: [
 			{
 				path: '/chart/line',
-				title: '折线图'
+				title: '订单数据总览',
+				permission: 1
 			},
 			{
 				path: '/chart/keyboard',
-				title: '键盘图表'
+				title: '查看订单'
 			},
-			{
-				path: '/chart/bar',
-				title: '柱状图'
-			},
-			{
-				path: '/chart/pie',
-				title: '饼图'
-			},
-			{
-				path: '/chart/mixin',
-				title: '混合图表'
-			}
+			// {
+			// 	path: '/chart/bar',
+			// 	title: '柱状图'
+			// },
+			// {
+			// 	path: '/chart/pie',
+			// 	title: '饼图'
+			// },
+			// {
+			// 	path: '/chart/mixin',
+			// 	title: '混合图表'
+			// }
 		]
 	},
 	{
@@ -120,45 +120,45 @@ export const menus = [
 			}
 		]
 	},
-	{
-		path: '/permission',
-		title: '权限测试',
-		icon: 'safety-certificate',
-		children: [
-			{
-				path: '/permission/toggle',
-				title: '权限切换',
-				permission: 1
-			},
-			{
-				path: '/permission/intercept',
-				title: '路由拦截'
-			}
-		]
-	},
-	{
-		path: '/news',
-		title: '消息',
-		icon: 'bell'
-	},
-	{
-		path: '/error',
-		title: '错误页面',
-		icon: 'switcher',
-		children: [
-			{
-				path: '/error/404',
-				title: '404'
-			},
-			{
-				path: '/error/500',
-				title: '500'
-			}
-		]
-	},
-	{
-		path: '/about',
-		title: '关于',
-		icon: 'copyright'
-	}
+	// {
+	// 	path: '/permission',
+	// 	title: '权限测试',
+	// 	icon: 'safety-certificate',
+	// 	children: [
+	// 		{
+	// 			path: '/permission/toggle',
+	// 			title: '权限切换',
+	// 			permission: 1
+	// 		},
+	// 		{
+	// 			path: '/permission/intercept',
+	// 			title: '路由拦截'
+	// 		}
+	// 	]
+	// },
+	// {
+	// 	path: '/news',
+	// 	title: '消息',
+	// 	icon: 'bell'
+	// },
+	// {
+	// 	path: '/error',
+	// 	title: '错误页面',
+	// 	icon: 'switcher',
+	// 	children: [
+	// 		{
+	// 			path: '/error/404',
+	// 			title: '404'
+	// 		},
+	// 		{
+	// 			path: '/error/500',
+	// 			title: '500'
+	// 		}
+	// 	]
+	// },
+	// {
+	// 	path: '/about',
+	// 	title: '关于',
+	// 	icon: 'copyright'
+	// }
 ];

@@ -25,14 +25,8 @@ class Login extends Component {
 					type: 'json',
 					data: values
 				}).then(data => {
-					console.log(data.data)
 					let code = data.data.code;
-					let type = data.data.type=='admin'?1:0
-					// if (type === 'admin') {
-					// 	type = 1
-					// } else {
-					// 	type = 0
-					// }
+					let type = data.data.type == 'admin' ? 1 : 0
 					let role = {}
 					role.type = type
 					role.name = type == 1 ? '超级管理员' : '管理员'

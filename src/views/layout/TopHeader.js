@@ -82,7 +82,7 @@ class TopHeader extends Component {
 			<div className="top-header">
 				<div className="top-header-inner">
 					<Icon className="trigger" type={true ? 'menu-unfold' : 'menu-fold'} onClick={this.toggle} />
-					<div className="header-title">React-antd-admin 通用后台管理系统</div>
+					<div className="header-title">汇晨PLC后台管理系统</div>
 					<div className="header-right">
 						<div className="full-screen">
 							<FullScreen />
