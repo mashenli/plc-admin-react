@@ -170,6 +170,16 @@ class BasicForm extends React.Component {
 							]
 						})(<Input />)}
 					</Form.Item>
+					<Form.Item label="产品价格" >
+						{getFieldDecorator('price', {
+							rules: [
+								{
+									required: true,
+									message: '请输入产品价格！'
+								}
+							]
+						})(<Input />)}
+					</Form.Item>
 					<Form.Item {...tailFormItemLayout}>
 						<Button type="primary" htmlType="submit">
 							添加

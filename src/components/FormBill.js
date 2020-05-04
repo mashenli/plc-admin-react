@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Form, Input, Button, Cascader } from 'antd';
-class EditForm extends Component {
+import { Form, Input, Button, Cascader, Select } from 'antd';
+const { Option } = Select;
+class FormBil extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -9,20 +10,25 @@ class EditForm extends Component {
 		}
 	}
 	handleSubmit = e => {
-		console.log(this.state.data)
 		e.preventDefault();
 		let data = {}
+		// console.log(this.state)
 		this.props.form.validateFieldsAndScroll((err, values) => {
 			if (!err) {
 				console.log('Received values of form: ', values);
 				data = values
+				data.billId = this.state.data.billId
 			}
 		});
 		this.props.handleSubmit(data)
 	}
+	handleChange = e => {
+		// console.log(e)
+
+	}
 	render() {
 		const { getFieldDecorator } = this.props.form;
-		const { productId } = this.state.data.productId
+		const { billId } = this.state.data.billId
 		const tailFormItemLayout = {
 			wrapperCol: {
 				sm: {
@@ -33,35 +39,26 @@ class EditForm extends Component {
 		};
 		return (
 			<Form onSubmit={this.handleSubmit} refs="editForm">
-				<Form.Item label="型号">
-					{getFieldDecorator('modular', {
+				<Form.Item label="地址">
+					{getFieldDecorator('address', {
 						rules: [
 							{
-								required: true,
-								message: '请输入型号！'
+								required: false,
+								message: '请输入地址！'
 							}
 						]
 					})(<Input />)}
 				</Form.Item>
-				<Form.Item label="订货号">
-					{getFieldDecorator('productId', {
-						rules: [
-							{
-								required: true,
-								message: '请输入订货号！'
-							}
-						]
-					})(<Input />)}
-				</Form.Item>
-				<Form.Item label="产品描述" >
-					{getFieldDecorator('describe', {
-						rules: [
-							{
-								required: true,
-								message: '请输入产品描述！'
-							}
-						]
-					})(<Input />)}
+				<Form.Item label="状态">
+					{getFieldDecorator('state', {
+						ininitialValue: '未付款'
+					})(<Select>
+						<Option value="未付款">未付款</Option>
+						<Option value="已付款">已付款</Option>
+						<Option value="已出库">已出库</Option>
+						<Option value="已收货">已收货</Option>
+						<Option value="售后中">售后中</Option>
+					</Select>)}
 				</Form.Item>
 				<Form.Item {...tailFormItemLayout}>
 					<Button type="primary" htmlType="submit">
@@ -72,4 +69,4 @@ class EditForm extends Component {
 		);
 	}
 }
-export default Form.create()(EditForm);
+export default Form.create()(FormBil);

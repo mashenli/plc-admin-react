@@ -22,6 +22,7 @@ import Other from '../views/control/Other';
 import MenuOne from '../views/levelMenu/MenuOne';
 import MenuTwo from '../views/levelMenu/MenuTwo';
 import About from '../views/about/About';
+import TableBill from '../views/chart/KeyBoard';
 
 export const routes = [
 	{ path: '/dashboard', component: Dashboard },
@@ -35,7 +36,7 @@ export const routes = [
 	{ path: '/table/edit', component: TableEdit },
 	{ path: '/table/search', component: TableSearch },
 	{ path: '/chart/line', component: LineChart },
-	{ path: '/chart/keyboard', component: Keyboard },
+	{ path: '/chart/keyboard', component: TableBill },
 	{ path: '/chart/bar', component: BarChart },
 	{ path: '/chart/pie', component: PieChart },
 	{ path: '/chart/mixin', component: MixinChart },
