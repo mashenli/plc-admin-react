@@ -92,7 +92,6 @@ class TableBill extends Component {
 				<div>
 					<div className="hidden">
 						<Radio.Group onChange={this.onChange} value={this.state.value}>
-							<Radio value={'未付款'}>未付款</Radio>
 							<Radio value={'已付款'}>已付款</Radio>
 							<Radio value={'已出库'}>已出库</Radio>
 							<Radio value={'已收货'}>已收货</Radio>

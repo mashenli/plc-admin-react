@@ -83,21 +83,24 @@ export const menus = [
 				permission: 1
 			},
 			{
+				path: '/chart/bar',
+				title: '同年月份销量',
+				permission: 1
+			},
+			{
+				path: '/chart/pie',
+				title: '产品销量比重',
+				permission: 1
+			},
+			{
+				path: '/chart/mixin',
+				title: '混合图表',
+				permission: 1
+			},
+			{
 				path: '/chart/keyboard',
 				title: '查看订单'
 			},
-			// {
-			// 	path: '/chart/bar',
-			// 	title: '柱状图'
-			// },
-			// {
-			// 	path: '/chart/pie',
-			// 	title: '饼图'
-			// },
-			// {
-			// 	path: '/chart/mixin',
-			// 	title: '混合图表'
-			// }
 		]
 	},
 	{

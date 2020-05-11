@@ -15,6 +15,7 @@ class SideNenu extends Component {
 	handleFilter = permission => {
 		const roleType = localStorage.getItem('userInfo') && JSON.parse(localStorage.getItem('userInfo')).role.type;
 		// 过滤没有权限的页面
+		console.log(roleType)
 		if (!permission || permission === roleType) {
 			return true;
 		}

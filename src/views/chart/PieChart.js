@@ -1,46 +1,119 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Chart from '@/components/chart/Chart';
-const chartData = {
-	backgroundColor: '#fff',
-	title: {
-		top: 30,
-		text: '饼图',
-		textStyle: {
-			fontWeight: 'normal',
-			fontSize: 16,
-			color: '#57617B'
-		},
-		left: 'center'
-	},
-	color: ['#001529', '#1890FF', '#1b9436', '#751313'],
-	tooltip: {
-		trigger: 'item',
-		formatter: '{a} <br/>{b} : {c} ({d}%)'
-	},
-	legend: {
-		orient: 'vertical',
-		x: 20,
-		data: ['电费', '水费', '物业费', '管理费', '停车费'],
-		top: 20
-	},
-	series: [
-		{
-			name: '费用支出',
-			type: 'pie',
-			radius: '55%',
-			center: ['50%', '60%'],
-			data: [{ value: 100, name: '电费' }, { value: 50, name: '水费' }, { value: 224, name: '物业费' }, { value: 60, name: '管理费' }, { value: 800, name: '停车费' }]
+import React, { Component } from 'react'
+import { Card } from 'antd'
+// import echarts from 'echarts'
+//按需导入
+// import echartTheme from '../echartTheme'
+import echarts from 'echarts/lib/echarts'
+//导入饼图
+import $axios from '../../axios/$axios';
+import 'echarts/lib/chart/pie'
+import 'echarts/lib/component/tooltip'
+import 'echarts/lib/component/title'
+import 'echarts/lib/component/legend'
+import 'echarts/lib/component/markPoint'
+import ReactEcharts from 'echarts-for-react'
+//引入样式
+// import '../common.less'
+
+export default class PieChart extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			option: {
+				title: {
+					text: '订单月统计',
+					x: 'center'
+				},
+				tooltip: {
+					trigger: 'item',
+					//提示框浮层内容格式器，支持字符串模板和回调函数形式。
+					formatter: "{a} <br/>{b} : {c} ({d}%)"
+				},
+				legend: {
+					orient: 'vertical',
+					top: 20,
+					right: 5,
+					data: []
+				},
+				series: [
+					{
+						name: '订单量',
+						type: 'pie',
+						data: [
+
+						],
+					}
+				]
+			}
 		}
-	]
-};
+	}
+	componentWillMount() {
+		// echarts.registerTheme("Imooc", echartTheme) //注入主题
+		// let that = this
+		$axios({
+			url: '/admin/fetch/year',
+			method: 'post',
+			type: 'json',
+		}).then(data => {
+			let newOption = this.state.option
+			newOption.series[0].data = data.data.data
+			newOption.legend.data = data.data.product
+			this.setState({
+				option: newOption
+			})
+			console.log(this.state.option)
+		})
+	}
+	componentDidMount() {
 
-const PieChart = props => <Chart chartData={chartData} height={'500px'} style={{ padding: 0 }} {...props} />;
+	}
+	getOption = () => {
+		let option = {
+			title: {
+				text: '销量总统计',
+				x: 'center'
+			},
+			tooltip: {
+				trigger: 'item',
+				//提示框浮层内容格式器，支持字符串模板和回调函数形式。
+				formatter: "{a} <br/>{b} : {c} ({d}%)"
+			},
+			legend: {
+				orient: 'vertical',
+				top: 20,
+				right: 5,
+				data: []
+			},
+			series: [
+				{
+					name: '订单量',
+					type: 'pie',
+					data: [
 
-const mapStateToProps = state => {
-	return {
-		collapse: state.collapse
-	};
-};
+					],
+				}
+			]
+		}
+		
+		$axios({
+			url: '/admin/fetch/year',
+			method: 'post',
+			type: 'json',
+		}).then(data => {
+			let newOption = this.state.option
+			newOption.series[0].data = data.data.data
+			newOption.legend.data = data.data.product
+			option = newOption
+		})
+		return option
+	}
+	render() {
+		return (
+			<Card.Grid className="pie_a">
+				<ReactEcharts option={this.state.option} notMerge={false} key={Date.now()} />
+			</Card.Grid>
+			
+		)
+	}
+}
 
-export default connect(mapStateToProps)(PieChart);
