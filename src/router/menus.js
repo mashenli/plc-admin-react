@@ -51,52 +51,48 @@ export const menus = [
 			}
 		]
 	},
-	// {
-	// 	path: '/menu',
-	// 	title: '多级菜单',
-	// 	icon: 'menu',
-	// 	children: [
-	// 		{
-	// 			path: '/menu/level',
-	// 			title: '二级菜单',
-	// 			children: [
-	// 				{
-	// 					path: '/menu/level/submenu-1',
-	// 					title: '三级菜单1',
-	// 				},
-	// 				{
-	// 					path: '/menu/level/submenu-2',
-	// 					title: '三级菜单2'
-	// 				}
-	// 			]
-	// 		}
-	// 	]
-	// },
+	{
+		path: '/menu',
+		title: '库存管理',
+		icon: 'menu',
+		children: [
+			{
+				path: '/menu/level',
+				title: '库存详情',
+				path: '/menu/level/submenu-1',
+			},
+			{
+				path: '/menu/level',
+				title: '库存预警',
+				path: '/menu/level/submenu-2',
+			}
+		]
+	},
 	{
 		path: '/chart',
 		title: '订单管理',
 		icon: 'area-chart',
 		children: [
-			{
-				path: '/chart/line',
-				title: '订单数据总览',
-				permission: 1
-			},
-			{
-				path: '/chart/bar',
-				title: '同年月份销量',
-				permission: 1
-			},
+			// {
+			// 	path: '/chart/line',
+			// 	title: '订单数据总览',
+			// 	permission: 1
+			// },
+			// {
+			// 	path: '/chart/bar',
+			// 	title: '同年月份销量',
+			// 	permission: 1
+			// },
 			{
 				path: '/chart/pie',
 				title: '产品销量比重',
 				permission: 1
 			},
-			{
-				path: '/chart/mixin',
-				title: '混合图表',
-				permission: 1
-			},
+			// {
+			// 	path: '/chart/mixin',
+			// 	title: '混合图表',
+			// 	permission: 1
+			// },
 			{
 				path: '/chart/keyboard',
 				title: '查看订单'

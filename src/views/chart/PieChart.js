@@ -109,9 +109,9 @@ export default class PieChart extends Component {
 	}
 	render() {
 		return (
-			<Card.Grid className="pie_a">
-				<ReactEcharts option={this.state.option} notMerge={false} key={Date.now()} />
-			</Card.Grid>
+			<div style={{width:'100%',height:'100%',textAlign:"center"}}>
+				<ReactEcharts option={this.state.option} notMerge={false} key={Date.now()} style={{width:'700px',height:'700px'}}/>
+			</div>
 			
 		)
 	}

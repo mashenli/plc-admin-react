@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Input, Button, Cascader } from 'antd';
-class EditForm extends Component {
+class StockFrom extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -33,32 +33,12 @@ class EditForm extends Component {
 		};
 		return (
 			<Form onSubmit={this.handleSubmit} refs="editForm">
-				<Form.Item label="型号">
+				<Form.Item label="库存数量">
 					{getFieldDecorator('num', {
 						rules: [
 							{
 								required: true,
-								message: '请输入型号！'
-							}
-						]
-					})(<Input />)}
-				</Form.Item>
-				<Form.Item label="订货号">
-					{getFieldDecorator('productId', {
-						rules: [
-							{
-								required: true,
-								message: '请输入订货号！'
-							}
-						]
-					})(<Input />)}
-				</Form.Item>
-				<Form.Item label="产品描述" >
-					{getFieldDecorator('describe', {
-						rules: [
-							{
-								required: true,
-								message: '请输入产品描述！'
+								message: '请输入新加库存数量！'
 							}
 						]
 					})(<Input />)}
@@ -72,4 +52,4 @@ class EditForm extends Component {
 		);
 	}
 }
-export default Form.create()(EditForm);
+export default Form.create()(StockFrom);
